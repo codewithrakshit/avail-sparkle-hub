@@ -67,10 +67,10 @@ const FeaturedTeachers = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="btn-soft inline-flex items-center space-x-2 hover-scale">
+          <a href="/search" className="btn-soft inline-flex items-center space-x-2 hover-scale">
             <span>View All Teachers</span>
             <span className="ml-2">→</span>
-          </button>
+          </a>
         </div>
       </div>
     </section>

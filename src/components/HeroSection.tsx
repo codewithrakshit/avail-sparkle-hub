@@ -34,11 +34,11 @@ const HeroSection = () => {
             <BookOpen className="h-8 w-8 text-primary" />
             <span className="text-2xl font-bold text-foreground">BookWise</span>
           </div>
-          <div className="hidden md:flex space-x-6">
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Find Teachers</a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">How it Works</a>
-            <Button variant="outline" className="btn-soft">Sign In</Button>
-          </div>
+            <div className="hidden md:flex space-x-6">
+              <a href="/search" className="text-muted-foreground hover:text-foreground transition-colors">Find Teachers</a>
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">How it Works</a>
+              <Button variant="outline" className="btn-soft">Sign In</Button>
+            </div>
         </nav>
       </header>
 
@@ -69,7 +69,7 @@ const HeroSection = () => {
                   />
                 </div>
                 <Button className="btn-hero">
-                  Search Teachers
+                  <a href="/search" className="text-inherit">Search Teachers</a>
                 </Button>
               </div>
             </div>

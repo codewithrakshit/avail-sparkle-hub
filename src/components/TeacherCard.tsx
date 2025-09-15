@@ -17,6 +17,7 @@ interface TeacherCardProps {
 }
 
 const TeacherCard = ({
+  id,
   name,
   image,
   subject,
@@ -95,6 +96,7 @@ const TeacherCard = ({
           variant="outline" 
           size="sm" 
           className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+          onClick={() => window.location.href = `/teacher/${id}`}
         >
           View Profile
         </Button>
@@ -102,6 +104,7 @@ const TeacherCard = ({
           size="sm" 
           className="flex-1 btn-hero"
           disabled={!isAvailable}
+          onClick={() => window.location.href = `/teacher/${id}`}
         >
           {isAvailable ? 'Book Now' : 'Unavailable'}
         </Button>
