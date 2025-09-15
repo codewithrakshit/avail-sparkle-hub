@@ -1,8 +1,10 @@
+
 import { useState, useEffect } from "react";
-import { CheckCircle2, Calendar, Clock, User, Mail, Phone, MessageCircle, CalendarPlus, ArrowLeft, Share2, Download } from "lucide-react";
+import { CheckCircle2, Calendar, Clock, User, Mail, Phone, CalendarPlus, ArrowLeft, Share2, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Footer from "@/components/Footer";
 import teacher1 from "@/assets/teacher-1.jpg";
 
 const BookingConfirmation = () => {
@@ -70,7 +72,7 @@ const BookingConfirmation = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary-soft/10 to-accent-soft/10">
+    <div className="min-h-screen bg-gradient-to-br from-background via-primary-soft/10 to-accent-soft/10 flex flex-col">
       {showConfetti && <Confetti />}
       
       {/* Header */}
@@ -225,14 +227,10 @@ const BookingConfirmation = () => {
 
           {/* Action Buttons */}
           <div className="space-y-4 animate-fade-in">
-            <div className="grid md:grid-cols-2 gap-4">
-              <Button className="btn-hero h-12">
+            <div className="flex justify-center">
+              <Button className="btn-hero h-12 px-8">
                 <CalendarPlus className="h-4 w-4 mr-2" />
                 Add to Calendar
-              </Button>
-              <Button variant="outline" className="h-12 btn-soft">
-                <MessageCircle className="h-4 w-4 mr-2" />
-                Message Teacher
               </Button>
             </div>
             
@@ -297,6 +295,7 @@ const BookingConfirmation = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

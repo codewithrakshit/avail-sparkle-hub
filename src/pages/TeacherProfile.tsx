@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { Star, MapPin, Clock, Calendar, MessageCircle, Share2, Heart, ChevronLeft, Award, BookOpen, Users, CheckCircle } from "lucide-react";
+import { Star, MapPin, Clock, Calendar, Share2, Heart, ChevronLeft, Award, BookOpen, Users, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import BookingModal from "@/components/BookingModal";
+import Footer from "@/components/Footer";
 import teacher1 from "@/assets/teacher-1.jpg";
 import teacher2 from "@/assets/teacher-2.jpg";
 import teacher3 from "@/assets/teacher-3.jpg";
@@ -91,7 +92,7 @@ const TeacherProfile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
+    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20 flex flex-col">
       {/* Header */}
       <header className="bg-card/80 backdrop-blur-sm border-b border-border/50 sticky top-0 z-40">
         <div className="container mx-auto px-6 py-4">
@@ -184,13 +185,18 @@ const TeacherProfile = () => {
                   </div>
 
                   <div className="flex items-center space-x-4">
-                    <Button className="btn-hero flex-1 sm:flex-none">
-                      <MessageCircle className="h-4 w-4 mr-2" />
-                      Message Teacher
-                    </Button>
-                    <Button variant="outline" className="btn-soft">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      View Calendar
+                    <Button 
+                      className="btn-hero flex-1 sm:flex-none text-lg px-8 py-4"
+                      onClick={() => {
+                        // Open booking modal with first available slot
+                        const firstSlot = timeSlots[0]?.slots[0];
+                        if (firstSlot) {
+                          handleBookSlot(timeSlots[0].date, firstSlot);
+                        }
+                      }}
+                    >
+                      <Calendar className="h-5 w-5 mr-2" />
+                      Book Now
                     </Button>
                   </div>
                 </div>
@@ -468,6 +474,7 @@ const TeacherProfile = () => {
           timeSlot={selectedTimeSlot}
         />
       )}
+      <Footer />
     </div>
   );
 };

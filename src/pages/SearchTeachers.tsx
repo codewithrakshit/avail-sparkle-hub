@@ -8,6 +8,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import TeacherCard from "@/components/TeacherCard";
+import Footer from "@/components/Footer";
 import teacher1 from "@/assets/teacher-1.jpg";
 import teacher2 from "@/assets/teacher-2.jpg";
 import teacher3 from "@/assets/teacher-3.jpg";
@@ -177,7 +178,7 @@ const SearchTeachers = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
+    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20 flex flex-col">
       {/* Header */}
       <header className="bg-card/80 backdrop-blur-sm border-b border-border/50 sticky top-0 z-40">
         <div className="container mx-auto px-6 py-4">
@@ -192,7 +193,7 @@ const SearchTeachers = () => {
             <div className="hidden md:flex items-center space-x-6">
               <a href="/" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
               <a href="/search" className="text-foreground font-medium">Find Teachers</a>
-              <a href="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">Dashboard</a>
+              <a href="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">Teacher Dashboard</a>
               <Button variant="outline" className="btn-soft">Sign In</Button>
             </div>
           </div>
@@ -412,6 +413,7 @@ const SearchTeachers = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

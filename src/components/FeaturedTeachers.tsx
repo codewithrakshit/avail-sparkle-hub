@@ -58,8 +58,8 @@ const FeaturedTeachers = () => {
           {teachers.map((teacher, index) => (
             <div 
               key={teacher.id} 
-              className="animate-scale-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="animate-card-scroll animate-card-hover"
+              style={{ animationDelay: `${index * 0.2}s` }}
             >
               <TeacherCard {...teacher} />
             </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, Calendar, BookOpen, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +6,11 @@ import heroIllustration from "@/assets/hero-illustration.jpg";
 
 const HeroSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const steps = [
     {
@@ -36,7 +41,7 @@ const HeroSection = () => {
           </div>
             <div className="hidden md:flex space-x-6">
               <a href="/search" className="text-muted-foreground hover:text-foreground transition-colors">Find Teachers</a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">How it Works</a>
+              <a href="/how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">How it Works</a>
               <Button variant="outline" className="btn-soft">Sign In</Button>
             </div>
         </nav>
@@ -48,8 +53,10 @@ const HeroSection = () => {
           {/* Left Content */}
           <div className="animate-fade-in">
             <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Find Available Teachers
-              <span className="text-primary block">Book with Ease</span>
+              <span className={`inline-block ${isVisible ? 'animate-word-fade' : ''}`} style={{ animationDelay: '0.1s' }}>Find</span>
+              <span className={`inline-block ml-2 ${isVisible ? 'animate-word-fade' : ''}`} style={{ animationDelay: '0.2s' }}>Available</span>
+              <span className={`inline-block ml-2 ${isVisible ? 'animate-word-fade' : ''}`} style={{ animationDelay: '0.3s' }}>Teachers</span>
+              <span className={`text-primary block ${isVisible ? 'animate-word-fade' : ''}`} style={{ animationDelay: '0.4s' }}>Book with Ease</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               Connect with expert teachers instantly. Schedule appointments seamlessly 
@@ -58,14 +65,14 @@ const HeroSection = () => {
             
             {/* Search Bar */}
             <div className="relative mb-8">
-              <div className="flex bg-card rounded-2xl shadow-lg p-2 hover-lift">
+              <div className="flex bg-card rounded-2xl shadow-lg p-2 animate-search-focus">
                 <div className="flex-1 relative">
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
                   <Input
                     placeholder="Search subjects or teacher names..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-12 pr-4 py-4 border-0 bg-transparent text-lg placeholder:text-muted-foreground"
+                    className={`pl-12 pr-4 py-4 border-0 bg-transparent text-lg placeholder:text-muted-foreground ${isVisible ? 'animate-placeholder-slide' : ''}`}
                   />
                 </div>
                 <Button className="btn-hero">
@@ -97,7 +104,7 @@ const HeroSection = () => {
               <img 
                 src={heroIllustration} 
                 alt="Students connecting with teachers through digital platforms"
-                className="w-full rounded-3xl shadow-2xl hover-scale"
+                className={`w-full rounded-3xl shadow-2xl hover-scale ${isVisible ? 'animate-hero-image' : ''}`}
               />
             </div>
           </div>
@@ -116,8 +123,8 @@ const HeroSection = () => {
               return (
                 <div 
                   key={index} 
-                  className="text-center animate-scale-in hover-lift"
-                  style={{ animationDelay: `${index * 0.2}s` }}
+                  className="text-center animate-step-bounce hover-lift"
+                  style={{ animationDelay: `${index * 0.3}s` }}
                 >
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-soft rounded-2xl mb-6">
                     <Icon className="h-8 w-8 text-primary" />
